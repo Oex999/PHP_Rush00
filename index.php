@@ -41,7 +41,7 @@
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="settings.php" data-info="Basket"><span>Basket</span></a>
 					<a class="bp-nav__item bp-icon bp-icon--drop" href="basket.php" data-info="Settings"><span>Settings</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="logout.php" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'login.php'; ?>" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
 				</nav>
 			</div>
 		</header>
