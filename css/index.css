@@ -1,4 +1,4 @@
-/* General Blueprint Style */
+/* General Style */
 
 @font-face {
 	font-family: 'bpicons';
@@ -6,7 +6,7 @@
 	font-style: normal;
 	src: url('../fonts/bpicons/bpicons.eot');
 	src: url('../fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'), url('../fonts/bpicons/bpicons.woff') format('woff'), url('../fonts/bpicons/bpicons.ttf') format('truetype'), url('../fonts/bpicons/bpicons.svg#bpicons') format('svg');
-}/* Made with http://icomoon.io/ */
+}
 
 
 /* Resets */
@@ -202,7 +202,7 @@ a:hover {
 	content: '\e004';
 }
 
-.dummy-logo {
+.place-logo {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -218,7 +218,7 @@ a:hover {
 	font-size: 4em;
 }
 
-.dummy-heading {
+.left-top-header {
 	font-size: 0.75em;
 	letter-spacing: 2px;
 	text-transform: uppercase;
@@ -290,7 +290,7 @@ body #cdawrap a:hover.carbon-poweredby {
 		width: 100%;
 		text-align: center;
 	}
-	.dummy-logo {
+	.place-logo {
 		display: none;
 	}
 	.content {

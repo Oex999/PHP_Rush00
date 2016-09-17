@@ -14,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Blueprint: Multi-Level Menu</title>
-	<meta name="description" content="Blueprint: A basic template for a responsive multi-level menu" />
+	<meta name="description" content="WeThinkcode PHP_BootCamp Rush_00 Project. making a" />
 	<meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
 	<meta name="author" content="Codrops" />
 	<link rel="shortcut icon" href="favicon.ico">
@@ -24,7 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!-- menu styles -->
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
-	<script src="js/modernizr-custom.js"></script>
+	<script src="js/js-custom-lib.js"></script>
 </head>
 
 <body>
@@ -32,9 +32,9 @@
 	<div class="container">
 		<!-- Webheader header -->
 		<header class="bp-header cf">
-			<div class="dummy-logo">
+			<div class="place-logo">
 				<div class="dummy-icon foodicon foodicon--coconut"></div>
-				<h2 class="dummy-heading">Left TOP Headr</h2>
+				<h2 class="left-top-header">Left TOP Headr</h2>
 			</div>
 			<div class="bp-header__main">
 				<span class="bp-header__present"><?php echo ($s_username != null) ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
@@ -127,11 +127,14 @@
 			?>
 			<!--<p class="info">Please choose a category</p>-->
 			<!-- Ajax loaded content here -->.
+      <ul>
+      <li class=\"product\"><div class=\"foodicon foodicon--broccoli\"></div></li>"
+    </ul>
 		</div>
 	</div>
 	<!-- /view -->
 	<script src="js/classie.js"></script>
-	<script src="js/dummydata.js"></script>
+	<script src="js/placeholder_data.js"></script>
 	<script src="js/main.js"></script>
 	<script>
 	(function() {
@@ -141,7 +144,7 @@
 				// initialBreadcrumb : 'all', // initial breadcrumb text
 				backCtrl : false, // show back button
 				// itemsDelayInterval : 60, // delay between each menu item sliding animation
-				onItemClick: loadDummyData // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
+				onItemClick: load_placeholder_Data // callback: item that doesn´t have a submenu gets clicked - onItemClick([event], [inner HTML of the clicked item])
 			});
 
 		// mobile menu toggle
@@ -162,7 +165,7 @@
 		// simulate grid content loading
 		var gridWrapper = document.querySelector('.content');
 
-		function loadDummyData(ev, itemName) {
+		function load_placeholder_Data(ev, itemName) {
 			ev.preventDefault();
 
 			closeMenu();
@@ -170,7 +173,7 @@
 			classie.add(gridWrapper, 'content--loading');
 			setTimeout(function() {
 				classie.remove(gridWrapper, 'content--loading');
-				gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
+				gridWrapper.innerHTML = '<ul class="products">' + Placeholder_Data[itemName] + '<ul>';
 			}, 700);
 		}
 	})();
