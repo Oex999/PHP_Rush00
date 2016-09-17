@@ -12,7 +12,7 @@
 		{
 			$_SESSION['logged_on'] = $s_username;
 			$_SESSION['access_level'] = get_access($s_username, $s_password);
-			header("Location: index.html");
+			header("Location: index.php");
 		}
 		else
 		{
