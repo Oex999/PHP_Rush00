@@ -36,12 +36,12 @@
 				<h2 class="dummy-heading">Left TOP Headr</h2>
 			</div>
 			<div class="bp-header__main">
-				<span class="bp-header__present">Rush00 <span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+				<span class="bp-header__present"><?php echo ($s_username != null) ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
 				<h1 class="bp-header__title">All mighty PHP kings</h1>
 				<nav class="bp-nav">
-					<a class="bp-nav__item bp-icon bp-icon--prev" href="user_info.php" data-info="User Information"><span>User Information</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--drop" href="basket.php" data-info="Basket"><span>Basket</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="logout.php" data-info="Settings"><span>LOGOUT</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--prev" href="settings.php" data-info="Basket"><span>Basket</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--drop" href="basket.php" data-info="Settings"><span>Settings</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="logout.php" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
 				</nav>
 			</div>
 		</header>
