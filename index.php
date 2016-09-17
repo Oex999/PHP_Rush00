@@ -30,10 +30,9 @@
 			</div>
 			<div class="bp-header__main">
 				<span class="bp-header__present">Rush00 <span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
-				<h1 class="bp-header__title">All might PHP kings</h1>
+				<h1 class="bp-header__title">All mighty PHP kings</h1>
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="user_info.php" data-info="User Information"><span>User Information</span></a>
-					<!--a class="bp-nav__item bp-icon bp-icon--next" href="" data-info="next Blueprint"><span>Next Blueprint</span></a-->
 					<a class="bp-nav__item bp-icon bp-icon--drop" href="basket.php" data-info="Basket"><span>Basket</span></a>
 					<a class="bp-nav__item bp-icon bp-icon--archive" href="settings.php" data-info="Settings"><span>Settings</span></a>
 				</nav>
