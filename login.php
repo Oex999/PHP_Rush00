@@ -17,6 +17,8 @@
 		else
 		{
 			$_SESSION['logged_on'] = "Guest";
+			$_SESSION['access_level'] = -1;
+			header("Location: index.php?load=login");
 		}
 	}
 ?>

@@ -3,7 +3,8 @@
 	session_start();
 
 	$s_username = $_SESSION['logged_on'];
-	$b_loadlogin = $_GET['login'];
+	$i_access = $_SESSION['access_level'];
+	$s_loadlogin = $_GET['load'];
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +38,12 @@
 				<h2 class="dummy-heading">Left TOP Headr</h2>
 			</div>
 			<div class="bp-header__main">
-				<span class="bp-header__present"><?php echo ($s_username != null) ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
+				<span class="bp-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
 				<h1 class="bp-header__title">All mighty PHP kings</h1>
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="basket.php" data-info="Basket"><span>Basket</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--drop" href="settings.php" data-info="Settings"><span>Settings</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?login=true'; ?>" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--drop" href="index.php?load=settings" data-info="Settings"><span>Settings</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?load=login'; ?>" data-info="<?php echo ($s_username != null && $i_access > -1) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
 				</nav>
 			</div>
 		</header>
@@ -120,8 +121,10 @@
 		</nav>
 		<div class="content">
 			<?php
-				if ($b_loadlogin == true && $_SESSION['logged_on'] == null)
-					echo "<iframe name=\"usr_login\" src=\"login.php\" height=\"400px\" width=\"100%\"></iframe>";
+				if ($s_loadlogin === 'login' && $_SESSION['logged_on'] == null)
+					echo "<iframe name=\"usr_login\" src=\"login.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
+				elseif ($s_loadlogin === 'settings')
+					echo "<iframe name=\"usr_login\" src=\"settings.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				else
 					echo "<p class='info'>Please choose a category</p>";
 			?>
