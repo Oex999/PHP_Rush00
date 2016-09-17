@@ -19,8 +19,8 @@
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- food icons -->
 	<link rel="stylesheet" type="text/css" href="css/organicfoodicons.css" />
-	<!-- demo styles -->
-	<link rel="stylesheet" type="text/css" href="css/demo.css" />
+	<!-- index styles -->
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!-- menu styles -->
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
 	<script src="js/modernizr-custom.js"></script>
@@ -29,14 +29,14 @@
 <body>
 	<!-- Main container -->
 	<div class="container">
-		<!-- Blueprint header -->
+		<!-- Webheader header -->
 		<header class="bp-header cf">
 			<div class="dummy-logo">
 				<div class="dummy-icon foodicon foodicon--coconut"></div>
 				<h2 class="dummy-heading">Left TOP Headr</h2>
 			</div>
 			<div class="bp-header__main">
-				<span class="bp-header__present"><?php echo ($s_username != null) ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The Blueprints are a collection of basic and minimal website concepts, components, plugins and layouts with minimal style for easy adaption and usage, or simply for inspiration."></span></span>
+				<span class="bp-header__present"><?php echo ($s_username != null) ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
 				<h1 class="bp-header__title">All mighty PHP kings</h1>
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="basket.php" data-info="Basket"><span>Basket</span></a>
