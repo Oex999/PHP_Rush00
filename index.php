@@ -3,6 +3,7 @@
 	session_start();
 
 	$s_username = $_SESSION['logged_on'];
+	$b_loadlogin = $_GET['login'];
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +42,7 @@
 				<nav class="bp-nav">
 					<a class="bp-nav__item bp-icon bp-icon--prev" href="basket.php" data-info="Basket"><span>Basket</span></a>
 					<a class="bp-nav__item bp-icon bp-icon--drop" href="settings.php" data-info="Settings"><span>Settings</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'login.php'; ?>" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
+					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?login=true'; ?>" data-info="<?php echo ($s_username != null) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
 				</nav>
 			</div>
 		</header>
@@ -118,8 +119,14 @@
 			</div>
 		</nav>
 		<div class="content">
-			<p class="info">Please choose a category</p>
-			<!-- Ajax loaded content here -->
+			<?php
+				if ($b_loadlogin == true && $_SESSION['logged_on'] == null)
+					echo "<iframe name=\"usr_login\" src=\"login.php\" height=\"400px\" width=\"100%\"></iframe>";
+				else
+					echo "<p class='info'>Please choose a category</p>";
+			?>
+			<!--<p class="info">Please choose a category</p>-->
+			<!-- Ajax loaded content here -->.
 		</div>
 	</div>
 	<!-- /view -->

@@ -25,12 +25,12 @@
 <html>
 	<body>
 		<h1>Login</h1>
-		<form action="login.php" method="POST">
+		<form action="login.php" method="POST" target="_top">
 			<label for="login">Username:</label>
 			<input type="input" name="login" value="" required="true" />
 			<label for="passwd">Password:</label>
 			<input type="password" name="passwd" required="true" />
-			<input type="submit" name="submit" value="OK">
+			<input type="submit" name="submit" value="OK" />
 		</form>
 		<br/>
 		<a href="create.php">Create Account</a>
