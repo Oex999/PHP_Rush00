@@ -113,9 +113,9 @@
 							<div class="dropdown" style="position: relative; z-index: 20;">
 								<button onclick="myFun_dropdown()" class="dropbtn"><?php echo $i_count; ?></button>
   							<div id="myDropdown" class="dropdown-content">
-    							<a href="#home">Test1</a>
-    							<a href="#about">test2</a>
-    							<a href="#contact">test3</a>
+    							<a href="#item1">item1</a>
+    							<a href="#item2">item2</a>
+    							<a href="#item3">item3</a>
   						</div>
 						</div>
 					</div>
