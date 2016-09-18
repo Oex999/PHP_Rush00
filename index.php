@@ -35,7 +35,7 @@
 		<header class="bp-header cf">
 			<div class="place-logo">
 				<div class="dummy-icon foodicon foodicon--coconut"></div>
-				<h2 class="left-top-header">Left TOP Headr</h2>
+				<h2 class="left-top-header">Left top Header</h2>
 			</div>
 			<div class="bp-header__main">
 				<span class="bp-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
