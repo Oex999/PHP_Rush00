@@ -64,7 +64,7 @@
 		}
 		mysqli_free_result($db_result);
 		mysqli_close($conn);
-		return (2);
+		return (0);
 	}
 
 	function check_user($login)

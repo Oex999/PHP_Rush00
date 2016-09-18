@@ -58,7 +58,7 @@
 		Creation of the Items Table.
 		*/
 
-		$db_create_items_table = "CREATE TABLE `rush00`.`items` ( `ID` INT NOT NULL AUTO_INCREMENT , `Name` VARCHAR(255) NOT NULL , `Img_link` TEXT NOT NULL , `Price` DOUBLE NOT NULL , `Stock` INT NOT NULL , `Description` INT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
+		$db_create_items_table = "CREATE TABLE `rush00`.`items` ( `ID` INT NOT NULL AUTO_INCREMENT , `Name` VARCHAR(255) NOT NULL , `Img_link` TEXT NOT NULL , `Price` DOUBLE NOT NULL , `Stock` INT NOT NULL , `Description` TEXT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
 		if (!mysqli_query($db_conn, $db_create_items_table))
 		{
 			echo "Failed to create Items Table";
