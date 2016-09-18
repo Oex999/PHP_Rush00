@@ -143,7 +143,7 @@
 			<input type="submit" name="delete" value="Delete"/>
 		</form></li>
 		
-		<li>
+		<§li>
 			<h3>Modify Users</h3>
 			<div class="userModif">
 			<?php
@@ -248,5 +248,39 @@
 
 	<hr/>
 	<h1>Current Orders</h1>
+	<ul>
+	<?php
+		$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+		if (!$db_conn)
+		{
+			echo "Error Connection to database";
+			return ;
+		}
+
+		$db_query = "SELECT * FROM `orders`";
+		$db_result = mysqli_query($db_conn, $db_query);
+		if ($db_result)
+		{
+			while ($row = mysqli_fetch_assoc($db_result))
+			{
+				echo "<li>";
+				$db_user_name = mysqli_fetch_assoc(mysqli_query($db_conn, "SELECT Username, Email FROM `users` WHERE ID='" . $row['user_id'] . "';"));
+				echo "<h3>USER: " . $db_user_name['Username'] . " (" . $db_user_name['Email'] . ")</h3>";
+				$a_file = unserialize($row['user_order']);
+				echo "<table><tr><td width='130px'>ITEM</td><td width='40px'>Qty</td><td width='120px'>Price</td><td>TOTAL</td></tr></table>";
+				foreach ($a_file as $item)
+				{
+					echo "<form style='margin-top: 5px;'>";
+						echo "<input type='input' readonly='true' value='" . $item['Name'] . "' />";
+						echo "<input size='5' type='input' readonly='true' value='" . $item['Qty'] . "' />";
+						echo "<input type='input' readonly='true' value='" . $item['Price'] . "' />";
+						echo "<input type='input' readonly='true' value='" . $item['Total'] . "' />";
+					echo "</form>";
+				}
+				echo "</li>";
+			}
+		}
+	?>
+	</ul>
 </body>
 </html>
