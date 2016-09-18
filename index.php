@@ -21,10 +21,12 @@
 	if ($_POST['add_trolly'] == "ADD")
 	{
 		$s_id = $_POST['item_id'];
+		$s_name = $_POST['it_name'];
 		$s_price = $_POST['item_price'];
 
 		$a_item = array();
 		$a_item['ID'] = $s_id;
+		$a_item['Name'] = $s_name;
 		$a_item['Qty'] = 1;
 		$a_item['Price'] = $s_price;
 		$a_item['Total'] = doubleval($s_price);
@@ -107,7 +109,7 @@
 				<span class="index-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip index_icon bp-icon--about" data-content="The user information goes here."></span></span>
 				<h1 class="index-header__title">Welcome to DARK! <div class="no_items"> <span class="no_items_text" ><?php echo $i_count; ?></span> </div></h1>
 				<nav class="bp-nav">
-					<a class="index-nav__item index_icon index-header__icon--basket" href="basket.php" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
+					<a class="index-nav__item index_icon index-header__icon--basket" href="index.php?load=basket" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
 					<a class="index-nav__item index_icon index-header__icon--settings" href="index.php?load=settings" data-info="Settings"><i class="material-icons">build</i><span>Settings</span></a>
 					<a class="index-nav__item index_icon index-header__icon--login" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?load=login'; ?>" data-info="<?php echo ($s_username != null && $i_access > -1) ? 'Logout' : 'Login';?>"><i class="material-icons">account_circle</i><span>Logout</span></a>
 				</nav>
@@ -146,6 +148,8 @@
 					echo "<iframe name=\"usr_login\" src=\"settings.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load	=== 'admin' && $i_access === 1)
 					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
+				elseif ($s_load === 'basket')
+					echo "<iframe name=\"usr_login\" src=\"basket.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				else if ($s_load === 'items' && $s_cat != null && $s_cat !== "")
 				{
 					echo "<ul class='products'>";
@@ -169,6 +173,7 @@
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
 								echo "<form class='trolly' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>";
 									echo "<input type='hidden' name='item_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='hidden' name='it_name' value='" . $row['Name'] . "' />";
 									echo "<input type='hidden' name='item_price' value='" . $row['Price'] . "'/>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
 								echo "</form>";
@@ -202,6 +207,7 @@
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
 								echo "<form class='trolly' action='index.php' method='POST'>";
 									echo "<input type='hidden' name='item_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='hidden' name='it_name' value='" . $row['Name'] . "' />";
 									echo "<input type='hidden' name='item_price' value='" . $row['Price'] . "'/>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
 								echo "</form>";

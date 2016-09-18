@@ -115,6 +115,13 @@
 			return false;
 		}
 
+		$db_create_orders = "CREATE TABLE `rush00`.`orders` ( `ID` INT NOT NULL AUTO_INCREMENT , `user_id` INT NOT NULL , `user_order` TEXT NOT NULL , `placed` TEXT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;";
+		if (!mysqli_query($db_conn, $db_create_orders))
+		{
+			echo "Failed to create orders table";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
+			return false;
+		}
 
 		mysqli_close($db_conn);
 		return true;

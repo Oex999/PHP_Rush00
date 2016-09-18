@@ -12,11 +12,17 @@
 		{
 			$_SESSION['logged_on'] = $s_username;
 			$_SESSION['access_level'] = get_access($s_username, $s_password);
-			header("Location: index.php");
+			if ($_SESSION['From'] === 'Basket')
+			{
+				$_SESSION['From'] = null;
+				header("Location: index.php?load=basket");
+			}
+			else
+				header("Location: index.php");
 		}
 		else
 		{
-			$_SESSION['logged_on'] = "Guest";
+			$_SESSION['logged_on'] = null;
 			$_SESSION['access_level'] = -1;
 			header("Location: index.php?load=login");
 		}

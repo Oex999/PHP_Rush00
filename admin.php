@@ -174,6 +174,37 @@
 				<input type="submit" name="add" value="ADD"/>
 			</form>
 		</li>
+		<li>
+			<h3>Modify Items</h3>
+			<div class="userModif">
+			<?php
+				$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+				if (!$db_conn)
+				{
+					echo "Error Connection to database";
+					return ;
+				}
+
+				$db_query = "SELECT * FROM `items`";
+				$db_result = mysqli_query($db_conn, $db_query);
+				if ($db_result)
+				{
+					while ($row = mysqli_fetch_assoc($db_result))
+					{
+						echo "<form action='admin.php' method='POST' style='margin-bottom:10px;'>";
+							echo "<input size='30' name='item' value='" . $row['Name'] . "' />"
+							echo "<input type='submit' name='modify' value='Modify'/>";
+							echo "<input type='submit' name='remove' value='remove'/>";
+						echo "</form>";
+					}
+				}
+				else
+					echo "<h1>No Users...</h1>";
+				mysqli_free_result($db_result);
+				mysqli_close($db_conn);
+			?>
+			</div>
+		</li>
 	</ul>
 </body>
 </html>
