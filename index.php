@@ -1,17 +1,27 @@
 <?php
-
+	include("install.php");
+	if (install_db() == false)
+	{
+		echo "Install Failed.";
+		return ;
+	}
 	session_start();
 
 	$s_username = $_SESSION['logged_on'];
 	$i_access = $_SESSION['access_level'];
 
 	$s_load = $_GET['load'];
-	$_cat = $_GET['cat'];
+	$s_cat = $_GET['cat'];
 
 	$db_server = "localhost";
 	$db_username = "root";
 	$db_password = "bakcWO0I2BBhTF4X";
 	$db_name = "rush00"
+
+	if ($_POST['add_trolly'] === 'ADD')
+	{
+		
+	}
 ?>
 
 <!DOCTYPE html>
@@ -74,13 +84,13 @@
 				</ul>
 				<!-- Submenu 1 -->
 				<ul data-menu="submenu-1" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=phones">Phones</a></li>
-					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=accessories">Accessories</a></li>
+					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=Phones">Phones</a></li>
+					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=Accessories">Accessories</a></li>
 				</ul>
 				<!-- Submenu 2 -->
 				<ul data-menu="submenu-2" class="menu__level">
-					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=fastfood">Fast Food</a></li>
-					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=food">Proper Food</a></li>
+					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=FastFood">Fast Food</a></li>
+					<li class="menu__item"><a class="menu__link" href="index.php?load=items&cat=Food">Proper Food</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -92,6 +102,39 @@
 					echo "<iframe name=\"usr_login\" src=\"settings.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load	=== 'admin' && $i_access === 1)
 					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
+				else if ($s_load === 'items' && $s_cat != null && $s_cat !== "")
+				{
+					echo "<ul class='products'>";
+
+					$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+					if (!$db_conn)
+					{
+						echo "Error Connection to database" . mysqli_connect_error();
+						return ;
+					}
+
+					$db_select = "SELECT * FROM `items` INNER JOIN `assign_categories` ON `items`.`ID` = `assign_categories`.`Item_ID` INNER JOIN `categories` ON `assign_categories`.`Category_ID`=`categories`.`ID` WHERE `categories`.`Category`='" . $s_cat . "';";
+					$db_result = mysqli_query($db_conn, $db_select);
+					if ($db_result)
+					{
+						while ($row = mysqli_fetch_assoc($db_result))
+						{
+							echo "<li class='product' style='text-align:center;'>";
+							echo  "<div class='item_name'>" . $row['Name'] . "</div><br/>";
+							echo "<img class='product_img' src='" . (($row['Img_link'] === "") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png" : $row['Img_link']) . "' />";
+							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
+								echo "<form class='trolly' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>";
+									echo "<input type='hidden' name='pro_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='submit' name='add_trolly' value='ADD' />";
+								echo "</form>";
+							echo "</div></li>";
+						}
+					}
+					mysqli_free_result($db_result);
+					mysqli_close($db_conn);
+
+					echo "</ul>";
+				}
 				elseif ($s_load !== 'items')
 				{
 					echo "<ul class='products'>";
@@ -112,7 +155,8 @@
 							echo  "<div class='item_name'>" . $row['Name'] . "</div><br/>";
 							echo "<img class='product_img' src='" . (($row['Img_link'] === "") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png" : $row['Img_link']) . "' />";
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
-								echo "<form class='trolly'>";
+								echo "<form class='trolly' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>";
+									echo "<input type='hidden' name='pro_id' value='" . $row['ID'] . "'/>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
 								echo "</form>";
 							echo "</div></li>";
@@ -124,18 +168,6 @@
 					echo "</ul>";
 				}
 			?>
-			<!-- Ajax loaded content here -->
-      	<!--<ul class="products">
-      			<li class="product" style="text-align:center;">
-      				ITEM NAME <br/>
-      				<img class="product_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png"/>
-					<div class="price_placement"><p class="price"> R00 000.00 </p>
-	      				<form class="trolly">
-	      					<input type="submit" name="submit" value="ADD"/>
-	      				</form>
-					</div>
-      			</li>
-    		</ul>-->
 		</div>
 	</div>
 	<!-- /view -->

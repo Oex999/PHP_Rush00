@@ -14,9 +14,14 @@
 		}
 
 		$db_create = "CREATE DATABASE IF NOT EXISTS " . $db_name;
-		if (!mysqli_query($db_conn, $db_create))
+		if (!mysqli_select_db($db_conn, $db_name))
+		{
+			mysqli_query($db_conn, $db_create);
+			mysqli_select_db($db_conn, $db_name);
+		}
+		else
 			return true;
-		mysqli_select_db($db_conn, $db_name);
+
 
 		/*
 		Creation of Users table and one admin.
@@ -26,6 +31,7 @@
 		if (!mysqli_query($db_conn, $db_create_users))
 		{
 			echo "Failed to create users tables";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
 
@@ -33,6 +39,7 @@
 		if (!mysqli_query($db_conn, $db_create_admin_1))
 		{
 			echo "Failed to create Admin.";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
 
@@ -44,6 +51,7 @@
 		if (!mysqli_query($db_conn, $db_create_categories))
 		{
 			echo "Failed to create categories tables";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
 
@@ -51,6 +59,7 @@
 		if (!mysqli_query($db_conn, $db_create_categories_add))
 		{
 			echo "Failed to add Categories";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
 
@@ -62,19 +71,50 @@
 		if (!mysqli_query($db_conn, $db_create_items_table))
 		{
 			echo "Failed to create Items Table";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
+
+		$db_add_items = "INSERT INTO `items` (`ID`, `Name`, `Img_link`, `Price`, `Stock`, `Description`) VALUES
+(1, 'Apple IPhone 7', 'https://cdn.shopify.com/s/files/1/1488/7814/products/iphone7-black-select-2016_AV2_large.png?v=1473924089', 20999, 10, 'iPhone 7 dramatically improves the most important aspects of the iPhone experience. It introduces advanced new camera systems. The best performance and battery life ever in an iPhone. Immersive stereo speakers. The brightest, most colorful iPhone display. Splash and water resistance.1 And it looks every bit as powerful as it is. This is iPhone 7.\r\n\r\nP.s. Doesn\'t have a earphones jack...'),
+(2, 'Galaxy Note 7', 'http://cdn2.gsmarena.com/vv/bigpic/samsung-galaxy-note7.jpg', 14000, 10, 'We rethought the Galaxy Note from every angle. A dual-curved screen so you can do more, better and faster. A rounded back so you can hold the 5.7-inch Note comfortably in the hand while using the S Pen. And continuing with the legacy of our previous Galaxy phones, we made the Galaxy Note7 water resistant. This time not just the device, but also the S Pen. So you can carry on using your phone wherever you are.'),
+(3, 'Apple Earpods', 'https://ae01.alicdn.com/kf/HTB1SQuOLFXXXXXQapXXq6xXFXXXw/100-Genuine-in-Ear-earphone-with-Mic-Remote-Original-font-b-Earpods-b-font-For-font.jpg', 600, 10, 'Comes with remote and Mic, for those who chose to get a stipend but don\'t really need it.'),
+(4, 'Galaxy Note 7 Charger', 'http://www.samsung.com/global/galaxy/galaxy-note7/accessories/images/galaxy-note7-accessories_kv.jpg', 1899, 5, 'The Samsung Note 7 charger, be careful though, it might go \'BOOM\'. Pretty cool charger though.'),
+(5, 'Big Tasty', 'http://www.mcdonalds.co.za/sites/default/files/product/Big-Tasty.png', 52.5, 999, 'It’s back! The soft and fluffy seeded bun, the exquisite combination of two 100% beef patties and two slices of creamy cheese, with shredded lettuce, slivered onions and tomato, topped with our famous smokey sauce. Once you’ve tasted the Big Tasty® you’ll be a fan for life.'),
+(6, 'MegaMac', 'http://www.mcdonalds.co.za/sites/default/files/product/Mega-Bigmac.png', 62.8, 999, 'It’s a Big Mac® but all grown up! The classic stacked bun with four 100% beef patties, a slice of cheese, shredded lettuce, onion, pickles, and the Big Mac® sauce we all know and love.'),
+(7, 'The Tamale Breakfast', 'http://www.muggandbean.co.za/img/menu/start-03.jpg', 74.9, 999, 'From Mugg & Bean... What do you expect? Expect good quality.'),
+(8, 'Backyard BBQ pretzel.', 'http://www.muggandbean.co.za/img/menu/fillings-04.jpg', 94.9, 999, 'From Mugg & Bean... What do you expect? Expect good quality.'),
+(9, 'Community Service', '', 20, 999999, 'Donate to the WTC_ cause... We dare you...'),
+(10, 'Cheese', '', 75, 5, 'Some cheese');
+";
+		if (!mysqli_query($db_conn, $db_add_items))
+		{
+			echo "Failed to add Items to table";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
+			return false;
+		}
+
 
 		/*
 		Creation of assign_categories.
 		*/
 
-		$db_create_assign_categories = "CREATE TABLE `rush00`.`assign_categories` ( `ID` INT NOT NULL AUTO_INCREMENT , `Item_ID` INT NOT NULL , `Category_ID` INT NOT NULL , PRIMARY KEY (`ID`), INDEX (`Item_ID`), INDEX (`Category_ID`)) ENGINE = InnoDB;";
+		$db_create_assign_categories = "CREATE TABLE `assign_categories` (`ID` int(11) NOT NULL, `Item_ID` int(11) NOT NULL, `Category_ID` int(11) NOT NULL , PRIMARY KEY (`ID`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 		if (!mysqli_query($db_conn, $db_create_assign_categories))
 		{
 			echo "Failed to create";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
 			return false;
 		}
+
+		$db_add_assign = "INSERT INTO `assign_categories` (`ID`, `Item_ID`, `Category_ID`) VALUES (1, 1, 3), (2, 2, 3), (3, 3, 4), (4, 4, 4), (5, 5, 5), (6, 6, 5), (7, 7, 6), (8, 8, 6), (9, 9, 7), (10, 10, 6), (11, 10, 7);";
+		if (!mysqli_query($db_conn, $db_add_assign))
+		{
+			echo "Failed to add category assignments";
+			mysqli_query($db_conn, "DROP DATABASE " . $db_name);
+			return false;
+		}
+
 
 		mysqli_close($db_conn);
 		return true;
