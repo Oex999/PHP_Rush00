@@ -7,6 +7,11 @@
 
 	$s_load = $_GET['load'];
 	$_cat = $_GET['cat'];
+
+	$db_server = "localhost";
+	$db_username = "root";
+	$db_password = "bakcWO0I2BBhTF4X";
+	$db_name = "rush00"
 ?>
 
 <!DOCTYPE html>
@@ -83,21 +88,47 @@
 				elseif ($s_load	=== 'admin' && $i_access === 1)
 					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load !== 'items')
-					echo "<p class='info'>Please choose a category</p>";
+				{
+					echo "<ul class='products'>";
+
+					$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+					if (!$db_conn)
+					{
+						echo "Error Connection to database" . mysqli_connect_error();
+						return ;
+					}
+
+					$db_result = mysqli_query($db_conn, "SELECT * FROM `items`");
+					if ($db_result)
+					{
+						while ($row = mysqli_fetch_assoc($db_result))
+						{
+							echo "<li class='product' style='text-align:center;'>";
+							echo $row['Name'] . "<br/>";
+							echo "<img class='product_img' src='" . $row['Img_link'] . "' />";
+							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
+								echo "<form class='trolly'>";
+									echo "<input type='submit' name='add_trolly' value='ADD' />";
+								echo "</form>";
+							echo "</div></li>";
+						}
+					}
+					mysqli_free_result($db_result);
+					mysqli_close($db_conn);
+
+					echo "</ul>";
+				}
 			?>
 			<!-- Ajax loaded content here -->
       	<ul class="products">
       			<li class="product" style="text-align:center;">
       				ITEM NAME <br/>
-      				<!--<div class="foodicon foodicon--broccoli">-->
-      					<img class="product_img" src="http://www.mcdonalds.co.za/sites/default/files/product/Big-Tasty.png"/>
-      				<!--</div>-->
-							<div class="price_placement">
-      				<p class="price"> R00 000.00 </p>
-      				<form class="trolly">
-      					<input type="submit" name="submit" value="ADD"/>
-      				</form>
-						</div>
+      				<img class="product_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png"/>
+					<div class="price_placement"><p class="price"> R00 000.00 </p>
+	      				<form class="trolly">
+	      					<input type="submit" name="submit" value="ADD"/>
+	      				</form>
+					</div>
       			</li>
     		</ul>
 		</div>
