@@ -85,16 +85,18 @@
 			?>
 			<!--<p class="info">Please choose a category</p>-->
 			<!-- Ajax loaded content here -->
-      		<ul class="products">
+      	<ul class="products">
       			<li class="product" style="text-align:center;">
       				ITEM NAME <br/>
       				<!--<div class="foodicon foodicon--broccoli">-->
-      					<img style="height:100px; width:100px;" src="http://www.mcdonalds.co.za/sites/default/files/product/Big-Tasty.png"/>
+      					<img class="product_img" src="http://www.mcdonalds.co.za/sites/default/files/product/Big-Tasty.png"/>
       				<!--</div>-->
-      				R00 000.00
-      				<form style="float:right; margin-right: 10px;">
+							<div class="price_placement">
+      				<p class="price"> R00 000.00 </p>
+      				<form class="trolly">
       					<input type="submit" name="submit" value="ADD"/>
       				</form>
+						</div>
       			</li>
     		</ul>
 		</div>

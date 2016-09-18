@@ -8,6 +8,34 @@
 	src: url('../fonts/feather/feather.eot?1gafuo#iefix') format('embedded-opentype'), url('../fonts/feather/feather.woff2?1gafuo') format('woff2'), url('../fonts/feather/feather.ttf?1gafuo') format('truetype'), url('../fonts/feather/feather.woff?1gafuo') format('woff'), url('../fonts/feather/feather.svg?1gafuo#feather') format('svg');
 }
 
+.product_img {
+	height:150px;
+	width:150px;
+	float: inherit;
+}
+
+.price {
+	position: absolute;
+	bottom: 3px;
+	left:30px;
+	float:left;
+}
+
+.trolly{
+	float:left;
+	margin-right: 10px;
+	position: absolute;
+	bottom: 20px;
+	right: 5px;
+}
+
+.price_placement {
+	float: right;
+	/*align-content: center;*/
+	height: 20%;
+	width: 80%;
+}
+
 .icon {
 	font-family: 'feather';
 	font-weight: normal;

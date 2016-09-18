@@ -246,6 +246,7 @@ a:hover {
 	height: 250px;
 	margin: 10px;
 	border-radius: 5px;
+	position: relative;
 	background: #1c1d22;
 }
 
