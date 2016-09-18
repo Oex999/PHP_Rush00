@@ -32,6 +32,11 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<!-- menu styles -->
 	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<!--Used for icons -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 	<script src="js/js-custom-lib.js"></script>
 </head>
 
@@ -41,16 +46,16 @@
 		<!-- Webheader header -->
 		<header class="bp-header cf">
 			<div class="place-logo">
-				<div class="placeholder-icon foodicon foodicon--coconut"></div>
+				<div class="placeholder-icon foodicon foodicon--coconut"> <img class="logo_img" src="http://www.logospike.com/wp-content/uploads/2014/11/Superman_logo-4.jpeg"> </div>
 				<h2 class="left-top-header">Left TOP Header</h2>
 			</div>
-			<div class="bp-header__main">
-				<span class="bp-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
-				<h1 class="bp-header__title">All mighty PHP kings</h1>
+			<div class="index-header__main">
+				<span class="index-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip index_icon bp-icon--about" data-content="The user information goes here."></span></span>
+				<h1 class="index-header__title">All mighty PHP kings</h1>
 				<nav class="bp-nav">
-					<a class="bp-nav__item bp-icon bp-icon--prev" href="basket.php" data-info="Basket"><span>Basket</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--drop" href="index.php?load=settings" data-info="Settings"><span>Settings</span></a>
-					<a class="bp-nav__item bp-icon bp-icon--archive" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?load=login'; ?>" data-info="<?php echo ($s_username != null && $i_access > -1) ? 'Logout' : 'Login';?>"><span>Logout</span></a>
+					<a class="index-nav__item index_icon index-header__icon--basket" href="basket.php" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
+					<a class="index-nav__item index_icon index-header__icon--settings" href="index.php?load=settings" data-info="Settings"><i class="material-icons">build</i><span>Settings</span></a>
+					<a class="index-nav__item index_icon index-header__icon--login" href="<?php echo ($s_username != null) ? 'logout.php' : 'index.php?load=login'; ?>" data-info="<?php echo ($s_username != null && $i_access > -1) ? 'Logout' : 'Login';?>"><i class="material-icons">account_circle</i><span>Logout</span></a>
 				</nav>
 			</div>
 		</header>
