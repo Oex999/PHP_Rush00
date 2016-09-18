@@ -47,7 +47,7 @@
 			return false;
 		}
 
-		$db_create_categories_add = "INSERT INTO `categories` (`ID`, `Category`, `Description`) VALUES (NULL, 'Electronics', 'Anything and everything to do with electronics. From watches to remote control cars. If it has a electronic chip in it, then it is probably here. Things a student can not do without.'), (NULL, 'Food', 'Food, another important part of a students life. Mainly fast food, but anything goes.')";
+		$db_create_categories_add = "INSERT INTO `categories` (`ID`, `Category`, `Description`) VALUES (NULL, 'Phones', 'Phones, essential to a students way of life. Without it, they return to the ways of barbarism and cannibalism, caused by the lack of Hitchhikers Guide to the Galaxy.'), (NULL, 'Accessories', 'Essentials like earphones and chargers, because we wouldn\'t want the students want to go without their phones now would we...'), (NULL, 'Fast Food', 'Food for on the run, when that project deadline is nearing at a horrendous pace.'), (NULL, 'Proper Food', 'When that project deadline is a few weeks away on the horizon and you think you have time (where you actually don\'t).'), (NULL, 'Misc', 'All other objects of interest...');";
 		if (!mysqli_query($db_conn, $db_create_categories_add))
 		{
 			echo "Failed to add Categories";
