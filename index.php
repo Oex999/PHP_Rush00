@@ -58,8 +58,8 @@
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-2" href="#">Food Items</a></li>
 					<li class="menu__item"><a class="menu__link" data-submenu="submenu-3" href="index.php?load=items&cat=misc">Misc.</a></li>
 					<?php
-						if ($i_access == 1)
-							echo "<li class=\"menu__item\"><a class=\"menu__link\" data-submenu=\"submenu-4\" href=\"#\">Admin</a></li>";
+						if ($i_access === 1)
+							echo "<li class=\"menu__item\"><a class=\"menu__link\" data-submenu=\"submenu-4\" href=\"index.php?load=admin\">Admin</a></li>";
 					?>
 				</ul>
 				<!-- Submenu 1 -->
@@ -80,10 +80,11 @@
 					echo "<iframe name=\"usr_login\" src=\"login.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load === 'settings')
 					echo "<iframe name=\"usr_login\" src=\"settings.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
-				else
+				elseif ($s_load	=== 'admin' && $i_access === 1)
+					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
+				elseif ($s_load !== 'items')
 					echo "<p class='info'>Please choose a category</p>";
 			?>
-			<!--<p class="info">Please choose a category</p>-->
 			<!-- Ajax loaded content here -->
       		<ul class="products">
       			<li class="product" style="text-align:center;">
