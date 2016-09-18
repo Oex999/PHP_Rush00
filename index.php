@@ -56,7 +56,7 @@
 			</div>
 			<div class="index-header__main">
 				<span class="index-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip index_icon bp-icon--about" data-content="The user information goes here."></span></span>
-				<h1 class="index-header__title">Welcome to DARK! [0]</h1>
+				<h1 class="index-header__title">Welcome to DARK! <div class="no_items"> <span class="no_items_text" > 0 </span> </div></h1>
 				<nav class="bp-nav">
 					<a class="index-nav__item index_icon index-header__icon--basket" href="basket.php" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
 					<a class="index-nav__item index_icon index-header__icon--settings" href="index.php?load=settings" data-info="Settings"><i class="material-icons">build</i><span>Settings</span></a>
