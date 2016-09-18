@@ -17,6 +17,12 @@
 	$db_username = "root";
 	$db_password = "bakcWO0I2BBhTF4X";
 	$db_name = "rush00";
+
+	if ($_POST['add_trolly'] == "ADD")
+	{
+		$s_id = $_POST['item_id'];
+		$s_price = $_POST['item_price'];
+	}
 ?>
 
 <!DOCTYPE html>
@@ -119,7 +125,8 @@
 							echo "<img class='product_img' src='" . (($row['Img_link'] === "") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png" : $row['Img_link']) . "' />";
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
 								echo "<form class='trolly' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>";
-									echo "<input type='hidden' name='pro_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='hidden' name='item_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='hidden' name='item_price' value='" . $row['Price'] . "'/>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
 								echo "</form>";
 							echo "</div></li>";
@@ -150,8 +157,9 @@
 							echo  "<div class='item_name'>" . $row['Name'] . "</div><br/>";
 							echo "<img class='product_img' src='" . (($row['Img_link'] === "") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png" : $row['Img_link']) . "' />";
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
-								echo "<form class='trolly' action='" . $_SERVER['REQUEST_URI'] . "' method='POST'>";
-									echo "<input type='hidden' name='pro_id' value='" . $row['ID'] . "'/>";
+								echo "<form class='trolly' action='index.php' method='POST'>";
+									echo "<input type='hidden' name='item_id' value='" . $row['ID'] . "'/>";
+									echo "<input type='hidden' name='item_price' value='" . $row['Price'] . "'/>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
 								echo "</form>";
 							echo "</div></li>";

@@ -9,7 +9,7 @@
 		$db_conn = mysqli_connect($db_server, $db_username, $db_password);
 		if (!$db_conn)
 		{
-			echo "Failed to connect toe MySQL Server";
+			echo "Failed to connect to MySQL Server";
 			return false;
 		}
 
