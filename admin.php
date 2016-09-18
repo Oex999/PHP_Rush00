@@ -90,8 +90,27 @@
 
 		$db_remove = "DELETE FROM `items` WHERE ID='" . $s_id . "';";
 		mysqli_query($db_conn, $db_remove);
-		header("Location: index.php?load=admin");		
 		mysqli_close($db_conn);
+		header("Location: index.php?load=admin");		
+	}
+	if ($_POST['modify_item'] == 'MODIFY')
+	{
+		$s_id = $_POST['id'];
+		$s_name = $_POST['ite_name'];
+		$s_price = $_POST['ite_price'];
+		$s_stock = $_POST['ite_stock'];
+
+		$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+		if (!$db_conn)
+		{
+			echo "Error Connection to database";
+			return ;
+		}
+
+		$db_update = "UPDATE `items` SET Name='" . $s_name . "', Price='" . $s_price . "', Stock='" .$s_stock . "' WHERE ID='" . $s_id ."';";
+		mysqli_query($db_conn, $db_update);
+		mysqli_close($db_conn);
+		header("Location: index.php?load=admin");
 	}
 ?>
 
@@ -99,7 +118,7 @@
 <html>
 	<head>
 		<style type="text/css">
-			h1, h3, label {
+			h1, h3, label, table {
 				color: #bdbdbd;
 			}
 
@@ -192,6 +211,7 @@
 		</li>
 		<li>
 			<h3>Modify Items</h3>
+			<table><tr><td width="190px">ITEM NAME</td><td width="130px">PRICE</td><td>STOCK</td></tr></table>
 			<div class="userModif">
 			<?php
 				$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
@@ -209,8 +229,9 @@
 					{
 						echo "<form target='_top' action='admin.php' method='POST' style='margin-bottom:10px;'>";
 							echo "<input type='hidden' name='id' value='" . $row['ID'] . "' />";
-							echo "<input size='30' name='item' value='" . $row['Name'] . "' />";
-							echo "<input name='price' required='true' value='" . $row['Price'] . "' />";
+							echo "<input required='true' size='30' name='ite_name' value='" . $row['Name'] . "' />";
+							echo "<input name='ite_price' required='true' value='" . $row['Price'] . "' />";
+							echo "<input name='ite_stock' required='true' value='" . $row['Stock'] . "' />";
 							echo "<input type='submit' name='modify_item' value='MODIFY'/>";
 							echo "<input type='submit' name='remove_item' value='REMOVE'/>";
 						echo "</form>";
@@ -221,8 +242,11 @@
 				mysqli_free_result($db_result);
 				mysqli_close($db_conn);
 			?>
-			</div>sadasd
+			</div>
 		</li>
 	</ul>
+
+	<hr/>
+	<h1>Current Orders</h1>
 </body>
 </html>
