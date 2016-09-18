@@ -126,7 +126,7 @@ a:hover {
 }
 
 .bp-nav {
-	margin: 0.5em 0 0 auto;
+	margin: 0 0 0 auto;
 	text-align: right;
 }
 
@@ -310,10 +310,10 @@ body #cdawrap a:hover.carbon-poweredby {
 }
 
 input[type=submit] {
-    padding:0px 15px; 
-    background:#ccc; 
+    padding:0px 15px;
+    background:#ccc;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
