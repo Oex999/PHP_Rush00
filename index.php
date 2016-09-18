@@ -90,7 +90,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+	<!-- dropdown function -->
+	<script src="js/dropdown.js"></script>
 	<script src="js/js-custom-lib.js"></script>
 </head>
 
@@ -105,7 +106,18 @@
 			</div>
 			<div class="index-header__main">
 				<span class="index-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip index_icon bp-icon--about" data-content="The user information goes here."></span></span>
-				<h1 class="index-header__title">Welcome to DARK! <div class="no_items"> <span class="no_items_text" ><?php echo $i_count; ?></span> </div></h1>
+				<h1 class="index-header__title">Welcome to DARK!
+					<div class="no_items" style="position: relative; z-index: 20;">
+							<div class="dropdown" style="position: relative; z-index: 20;">
+								<button onclick="myFun_dropdown()" class="dropbtn"><?php echo $i_count; ?></button>
+  							<div id="myDropdown" class="dropdown-content">
+    							<a href="#home">Test1</a>
+    							<a href="#about">test2</a>
+    							<a href="#contact">test3</a>
+  						</div>
+						</div>
+					</div>
+				</h1>
 				<nav class="bp-nav">
 					<a class="index-nav__item index_icon index-header__icon--basket" href="basket.php" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
 					<a class="index-nav__item index_icon index-header__icon--settings" href="index.php?load=settings" data-info="Settings"><i class="material-icons">build</i><span>Settings</span></a>

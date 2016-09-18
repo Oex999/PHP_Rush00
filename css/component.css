@@ -8,6 +8,61 @@
 	src: url('../fonts/feather/feather.eot?1gafuo#iefix') format('embedded-opentype'), url('../fonts/feather/feather.woff2?1gafuo') format('woff2'), url('../fonts/feather/feather.ttf?1gafuo') format('truetype'), url('../fonts/feather/feather.woff?1gafuo') format('woff'), url('../fonts/feather/feather.svg?1gafuo#feather') format('svg');
 }
 
+
+.dropbtn {
+		float: right;
+		/*position: fixed;*/
+		background-color: darkred;
+		border-radius: 3px;
+		margin-left: 10px;
+		right: 5px;
+		height: 25px;
+		width: 40px;
+		/*opacity: 0.8;*/
+		text-align: center;
+    border: none;
+    cursor: pointer;
+		z-index: auto;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: red;
+		z-index: auto;
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+		z-index: auto;
+
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #424348;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+		z-index: auto;
+}
+
+
+.dropdown-content a {
+    color: #cecece;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+		z-index: auto;
+}
+
+.dropdown a:hover {background-color: #282934}
+
+.show {display:block;}
+
 .no_items{
 	float: right;
 	/*position: fixed;*/
@@ -17,8 +72,9 @@
 	right: 5px;
 	height: 25px;
 	width: 40px;
-	opacity: 0.5;
+	/*opacity: 0.8;*/
 	text-align: center;
+	z-index: auto;
 }
 
 .no_items_text{
@@ -34,6 +90,7 @@
 	margin: 5px;
 	height:150px;
 	width:150px;
+
 	float: inherit;
 }
 
