@@ -63,7 +63,7 @@
 		$a_file = unserialize(file_get_contents("./private/basket"));
 		foreach ($a_file as $item)
 		{
-			$i_count += 1;
+			$i_count += $item['Qty'];
 		}
 	}
 ?>
