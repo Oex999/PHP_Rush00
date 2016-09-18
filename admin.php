@@ -77,24 +77,40 @@
 
 		mysqli_close($db_conn);
 	}
+	if ($_POST['remove_item'] == "REMOVE")
+	{
+		$s_id = $_POST['id'];
 
+		$db_conn = mysqli_connect($db_server, $db_username, $db_password, $db_name);
+		if (!$db_conn)
+		{
+			echo "Error Connection to database";
+			return ;
+		}
+
+		$db_remove = "DELETE FROM `items` WHERE ID='" . $s_id . "';";
+		mysqli_query($db_conn, $db_remove);
+		header("Location: index.php?load=admin");		
+		mysqli_close($db_conn);
+	}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<style type="text/css">
-			* {
-				color: #bdbdbd;
-			}
-			h1 {
+			h1, h3, label {
 				color: #bdbdbd;
 			}
 
 			.userModif {
 				width: 100%;
-				max-height: 100px;
+				max-height: 200px;
 				overflow-y: auto;
+			}
+
+			input[type=submit] {
+			    color:black;
 			}
 		</style>
 	</head>
@@ -185,16 +201,18 @@
 					return ;
 				}
 
-				$db_query = "SELECT * FROM `items`";
+				$db_query = "SELECT * FROM `items`;";
 				$db_result = mysqli_query($db_conn, $db_query);
 				if ($db_result)
 				{
 					while ($row = mysqli_fetch_assoc($db_result))
 					{
-						echo "<form action='admin.php' method='POST' style='margin-bottom:10px;'>";
-							echo "<input size='30' name='item' value='" . $row['Name'] . "' />"
-							echo "<input type='submit' name='modify' value='Modify'/>";
-							echo "<input type='submit' name='remove' value='remove'/>";
+						echo "<form target='_top' action='admin.php' method='POST' style='margin-bottom:10px;'>";
+							echo "<input type='hidden' name='id' value='" . $row['ID'] . "' />";
+							echo "<input size='30' name='item' value='" . $row['Name'] . "' />";
+							echo "<input name='price' required='true' value='" . $row['Price'] . "' />";
+							echo "<input type='submit' name='modify_item' value='MODIFY'/>";
+							echo "<input type='submit' name='remove_item' value='REMOVE'/>";
 						echo "</form>";
 					}
 				}
@@ -203,7 +221,7 @@
 				mysqli_free_result($db_result);
 				mysqli_close($db_conn);
 			?>
-			</div>
+			</div>sadasd
 		</li>
 	</ul>
 </body>
