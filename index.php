@@ -159,7 +159,7 @@
 				elseif ($s_load === 'settings')
 					echo "<iframe name=\"usr_login\" src=\"settings.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load	=== 'admin' && $i_access === 1)
-					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
+					echo "<iframe name=\"usr_login\" src=\"admin.php\" height=\"900px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				elseif ($s_load === 'basket')
 					echo "<iframe name=\"usr_login\" src=\"basket.php\" height=\"500px\" width=\"100%\" frameborder=\"0\"></iframe>";
 				else if ($s_load === 'items' && $s_cat != null && $s_cat !== "")
