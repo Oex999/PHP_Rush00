@@ -308,3 +308,12 @@ body #cdawrap a:hover.carbon-poweredby {
 		overflow: auto;
 	}
 }
+
+input[type=submit] {
+    padding:0px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
