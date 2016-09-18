@@ -3,7 +3,7 @@
  * class helper functions
  * from bonzo https://github.com/ded/bonzo
  * MIT license
- * 
+ *
  * classie.has( elem, 'my-class' ) -> true/false
  * classie.add( elem, 'my-new-class' )
  * classie.remove( elem, 'my-unwanted-class' )
@@ -17,7 +17,7 @@
 
 'use strict';
 
-// class helper functions from bonzo https://github.com/ded/bonzo
+// class helper functions
 
 function classReg( className ) {
   return new RegExp("(^|\\s+)" + className + "(\\s+|$)");

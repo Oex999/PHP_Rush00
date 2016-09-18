@@ -15,9 +15,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Blueprint: Multi-Level Menu</title>
-	<meta name="description" content="WeThinkcode PHP_BootCamp Rush_00 Project. making a" />
-	<meta name="keywords" content="blueprint, template, html, css, menu, responsive, mobile-friendly" />
-	<meta name="author" content="Codrops" />
+	<meta name="description" content="WeThinkcode PHP_BootCamp Rush_00 Project." />
+	<meta name="keywords" content="Making a mini e-commerce online shop" />
+	<meta name="author" content="ggroener and oexall" />
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- food icons -->
 	<link rel="stylesheet" type="text/css" href="css/organicfoodicons.css" />
@@ -33,9 +33,8 @@
 	<div class="container">
 		<!-- Webheader header -->
 		<header class="bp-header cf">
-			<div class="place-logo">
-				<div class="dummy-icon foodicon foodicon--coconut"></div>
-				<h2 class="left-top-header">Left top Header</h2>
+				<div class="placeholder-icon foodicon foodicon--coconut"></div>
+				<h2 class="left-top-header">Left TOP Headr</h2>
 			</div>
 			<div class="bp-header__main">
 				<span class="bp-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip bp-icon bp-icon--about" data-content="The user information goes here."></span></span>
