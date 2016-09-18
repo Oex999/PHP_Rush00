@@ -34,7 +34,7 @@
 	content: "\e902";
 }
 .foodicon--coconut::before {
-	content: "\e903";
+	/*content: "\e903";*/
 }
 .foodicon--corn::before {
 	content: "\e904";
