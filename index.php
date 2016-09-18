@@ -110,7 +110,7 @@
 						{
 							echo "<li class='product' style='text-align:center;'>";
 							echo $row['Name'] . "<br/>";
-							echo "<img class='product_img' src='" . $row['Img_link'] . "' />";
+							echo "<img class='product_img' src='" . (($row['Img_link'] === "") ? "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png" : $row['Img_link']) . "' />";
 							echo "<div class='price_placement'><p class='price'>R" . $row['Price'] . "</p>";
 								echo "<form class='trolly'>";
 									echo "<input type='submit' name='add_trolly' value='ADD' />";
@@ -125,7 +125,7 @@
 				}
 			?>
 			<!-- Ajax loaded content here -->
-      	<ul class="products">
+      	<!--<ul class="products">
       			<li class="product" style="text-align:center;">
       				ITEM NAME <br/>
       				<img class="product_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1000px-No_image_available.svg.png"/>
@@ -135,7 +135,7 @@
 	      				</form>
 					</div>
       			</li>
-    		</ul>
+    		</ul>-->
 		</div>
 	</div>
 	<!-- /view -->
