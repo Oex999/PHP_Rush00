@@ -21,6 +21,10 @@
 	float:left;
 }
 
+.material-icons{
+	position: absolute;
+}
+
 .trolly{
 	float:left;
 	margin-right: 10px;
