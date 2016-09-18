@@ -22,6 +22,49 @@
 	{
 		$s_id = $_POST['item_id'];
 		$s_price = $_POST['item_price'];
+
+		$a_item = array();
+		$a_item['ID'] = $s_id;
+		$a_item['Qty'] = 1;
+		$a_item['Price'] = $s_price;
+		$a_item['Total'] = doubleval($s_price);
+
+		$a_file;
+		$has_item = false;
+		if (!is_dir("./private"))
+			mkdir("./private");
+		if (file_exists("./private/basket"))
+		{
+			$a_file = unserialize(file_get_contents("./private/basket"));
+			foreach ($a_file as $key=>$item)
+			{
+				if ($item['ID'] === $a_item['ID'])
+				{
+					$has_item = true;
+					$a_file[$key]['Qty'] += 1;
+					$a_file[$key]['Total'] += $a_item['Price'];
+				}
+			}
+			if ($has_item === false)
+				$a_file[] = $a_item;
+			file_put_contents("./private/basket", serialize($a_file));
+		}
+		else
+		{
+			$a_file = array();
+			$a_file[] = $a_item;
+			file_put_contents("./private/basket", serialize($a_file));
+		}
+	}
+
+	$i_count = 0;
+	if (file_exists("./private/basket"))
+	{
+		$a_file = unserialize(file_get_contents("./private/basket"));
+		foreach ($a_file as $item)
+		{
+			$i_count += 1;
+		}
 	}
 ?>
 
@@ -62,7 +105,7 @@
 			</div>
 			<div class="index-header__main">
 				<span class="index-header__present"><?php echo ($s_username != null && $s_username != 'Guest') ? $s_username : "Guest"; ?><span class="bp-tooltip index_icon bp-icon--about" data-content="The user information goes here."></span></span>
-				<h1 class="index-header__title">Welcome to DARK! <div class="no_items"> <span class="no_items_text" > 0 </span> </div></h1>
+				<h1 class="index-header__title">Welcome to DARK! <div class="no_items"> <span class="no_items_text" ><?php echo $i_count; ?></span> </div></h1>
 				<nav class="bp-nav">
 					<a class="index-nav__item index_icon index-header__icon--basket" href="basket.php" data-info="Basket"><i class="material-icons">add_shopping_cart</i><span>Basket</span></a>
 					<a class="index-nav__item index_icon index-header__icon--settings" href="index.php?load=settings" data-info="Settings"><i class="material-icons">build</i><span>Settings</span></a>
