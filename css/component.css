@@ -8,6 +8,27 @@
 	src: url('../fonts/feather/feather.eot?1gafuo#iefix') format('embedded-opentype'), url('../fonts/feather/feather.woff2?1gafuo') format('woff2'), url('../fonts/feather/feather.ttf?1gafuo') format('truetype'), url('../fonts/feather/feather.woff?1gafuo') format('woff'), url('../fonts/feather/feather.svg?1gafuo#feather') format('svg');
 }
 
+.no_items{
+	float: right;
+	/*position: fixed;*/
+	background-color: darkred;
+	border-radius: 3px;
+	margin-left: 10px;
+	right: 5px;
+	height: 25px;
+	width: 40px;
+	opacity: 0.5;
+	text-align: center;
+}
+
+.no_items_text{
+	color: white;
+}
+
+.count_icon{
+	float: right;
+}
+
 .product_img {
 	padding: 5px;
 	margin: 5px;
